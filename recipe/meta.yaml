@@ -1,6 +1,6 @@
 {% set name = "rake_nltk" %}
-{% set version = "1.0.3" %}
-{% set sha256 = "67759e32ef9be82bbfc78efdb92db56fc43bc7c98053dcd415f6ddf576b4ea62" %}
+{% set version = "1.0.4" %}
+{% set sha256 = "fe2b5d4422754f80f292763dac9e5be366af7a7a0431a621d79c603110cd004e" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   skip: True  # [win]
 
@@ -49,3 +49,4 @@ about:
 extra:
   recipe-maintainers:
     - cu8blank
+    - Ryan-Dmello
