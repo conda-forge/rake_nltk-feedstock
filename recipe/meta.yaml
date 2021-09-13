@@ -1,6 +1,6 @@
 {% set name = "rake_nltk" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "fe2b5d4422754f80f292763dac9e5be366af7a7a0431a621d79c603110cd004e" %}
+{% set version = "1.0.5" %}
+{% set sha256 = "d08de98ec5d2370fdb1fdc15e0ede5b8cdcf3563f13ec00e4a5c6bbf7bf15e40" %}
 
 package:
   name: {{ name|lower }}
@@ -8,13 +8,13 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('_', '-') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   host:
@@ -37,7 +37,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'RAKE short for Rapid Automatic Keyword Extraction algorithm'
+  summary: RAKE short for Rapid Automatic Keyword Extraction algorithm
 
   description: |
     RAKE short for Rapid Automatic Keyword Extraction algorithm, is a domain independent
