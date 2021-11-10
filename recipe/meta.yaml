@@ -1,36 +1,37 @@
 {% set name = "rake_nltk" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "fe2b5d4422754f80f292763dac9e5be366af7a7a0431a621d79c603110cd004e" %}
+{% set version = "1.0.6" %}
+
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/rake-nltk-{{ version }}.tar.gz
+  sha256: 7813d680b2ce77b51cdac1757f801a87ff47682c9dbd2982aea3b66730346122
 
 build:
-  number: 3
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: True  # [win]
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
+    - python >=3.6,<4.0
     - pip
-    - nltk
-    - nltk_data
+    - poetry
   run:
-    - python
-    - nltk
+    - python >=3.6,<4.0
+    - nltk >=3.6.2,<4.0.0
     - nltk_data
 
 test:
   imports:
     - rake_nltk
-
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/csurfer/rake-nltk
